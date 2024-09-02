@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EventGhost Version="1722" Guid="{0F1B5CC7-4D98-4BE9-B7AF-34086881CA70}" Time="1725292325.31">
+    <Autostart Name="Autostart" Expanded="True">
+        <Plugin Identifier="Task" Guid="{D1748551-C605-4423-B392-FB77E6842437}" File="Task">
+            gAIpLg==
+        </Plugin>
+    </Autostart>
+    <Folder Name="Auto PSVR Steam" Expanded="True">
+        <Macro Name="PSVR Connected" Expanded="True">
+            <Event Name="System.DeviceRemoved" />
+            <Event Name="System.DeviceAttached" />
+            <Action>
+                EventGhost.PythonScript(u"x = u'\\\\\\\\?\\\\USB#VID_054C&amp;PID_0CDE#6&amp;c1a2e2f&amp;0&amp;5#{a5dcbf10-6530-11d2-901f-00c04fb951ed}'\ny = eg.event.payload[0]\n\nif x == y:    \n    if eg.event.string == 'System.DeviceAttached':\n        eg.plugins.EventGhost.ShowOSD(u'PSVR CONNECTED', u'0;-96;0;0;0;700;0;0;0;0;1;2;1;49;Fixedsys', (128, 255, 0), None, 4, (0, 0), 0, 3.0, False)\n        eg.TriggerEvent('PSVR Connected')\n    elif eg.event.string == 'System.DeviceRemoved':\n        eg.plugins.EventGhost.ShowOSD(u'PSVR DISCONNECTED', u'0;-96;0;0;0;700;0;0;0;0;1;2;1;49;Fixedsys', (128, 255, 0), None, 4, (0, 0), 0, 3.0, False)\n        eg.TriggerEvent('PSVR Disconnected')    \n")
+            </Action>
+        </Macro>
+        <Macro Name="Stop SteamVR" Expanded="True">
+            <Event Name="Main.PSVR Disconnected" />
+            <Action>
+                System.Command(u'taskkill /IM "vrmonitor.exe" /F', True, False, u'', True, False, False, False, False)
+            </Action>
+        </Macro>
+        <Macro Name="Start SteamVR" Expanded="True">
+            <Event Name="Main.PSVR Connected" />
+            <Action>
+                System.Command(u'start steam://rungameid/250820', False, False, u'', True, False, False, False, False)
+            </Action>
+        </Macro>
+    </Folder>
+</EventGhost>
