@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<EventGhost Version="1722" Guid="{6A851C13-5FB5-4B76-9CDE-9DF77FE091B3}" Time="1725941183.24">
+<EventGhost Version="1722" Guid="{1A1EE09A-CE6A-41D8-BE29-0451A24599F5}" Time="1732328582.48">
     <Autostart Name="Autostart" Expanded="True">
         <Plugin Identifier="Task" Guid="{D1748551-C605-4423-B392-FB77E6842437}" File="Task">
+            gAIpLg==
+        </Plugin>
+        <Plugin Identifier="Speech" Guid="{76A1638D-1D7D-4582-A726-A17B1A6FC723}" File="Speech">
             gAIpLg==
         </Plugin>
     </Autostart>
@@ -10,17 +13,17 @@
             <Event Name="System.DeviceRemoved" />
             <Event Name="System.DeviceAttached" />
             <Action>
-                EventGhost.PythonScript(u'devices = {\n    \'PSVR\': \'VID_054C&amp;PID_0CDE\',\n    \'MOZA HBP\': \'VID_346E&amp;PID_001F\',\n    \'CAMMUS C5\': \'VID_3416&amp;PID_0301&amp;MI_02\',\n    \'CAMMUS CP5\': \'VID_3416&amp;PID_1018\',\n    \'MSI LIBERATOR\': \'VID_0DB0&amp;PID_4C42&amp;MI_02\',\n    \'SIMJACK SQB\': \'VID_6307&amp;PID_9962&amp;MI_00\',\n    \'SIMJACK HQB\': \'VID_5229&amp;PID_6425&amp;MI_01\',\n    \'LOGITECH PRO PEDALS\': \'VID_046D&amp;PID_C26A&amp;MI_01\'\n    }\n\npld = eg.event.payload[0]\nevt = eg.event.string\n\neventname = \'CONNECTED\' if evt == \'System.DeviceAttached\' else \'DISCONNECTED\'\n\nfor device, id in devices.items():\n    if id in pld:\n        eg.plugins.EventGhost.ShowOSD("{0} {1}".format(device, eventname), u\'0;-96;0;0;0;700;0;0;0;0;1;2;1;49;Fixedsys\', (128, 255, 0), None, 4, (0, 0), 0, 3.0, False)\n        eg.TriggerEvent("{0} {1}".format(device, eventname))\n        break\n')
+                EventGhost.PythonScript(u'devices = {\n    \'PSVR\': \'VID_054C&amp;PID_0CDE\',\n    \'Moza Handbrake\': \'VID_346E&amp;PID_001F&amp;MI_02\',\n    \'CAMMUS C5\': \'VID_3416&amp;PID_0301&amp;MI_02\',\n    \'CAMMUS CP5\': \'VID_3416&amp;PID_1018\',\n    \'MSI LIBERATOR\': \'VID_0DB0&amp;PID_4C42&amp;MI_02\',\n    \'SIMJACK SQB\': \'VID_6307&amp;PID_9962&amp;MI_00\',\n    \'SIMJACK HQB\': \'VID_5229&amp;PID_6425&amp;MI_01\',\n    \'LOGITECH PRO PEDALS\': \'VID_046D&amp;PID_C26A&amp;MI_01\',\n    \'LEAP MOTION\': \'VID_2936&amp;PID_1202\',\n    \'PIMAX CRYSTAL\':\'VID_34A4&amp;PID_0012\',\n    \'HURRICANE\':\'VID_1A86&amp;PID_7523\',\n    \'BST\'\'s\': \'VID_0D8C&amp;PID_0102&amp;MI_03\',\n    \'HF8\': \'USB#VID_04D8&amp;PID_EE96\',\n    \'Galaxy Tab\': \'USB#VID_04E8&amp;PID_6860\'\n    }\n\npld = eg.event.payload[0]\nevt = eg.event.string\n\neventname = \'CONNECTED\' if evt == \'System.DeviceAttached\' else \'DISCONNECTED\'\n\nfor device, id in devices.items():\n    if id in pld:\n        eg.plugins.EventGhost.ShowOSD("{0} {1}".format(device, eventname), u\'0;-96;0;0;0;700;0;0;0;0;1;2;1;49;Fixedsys\', (128, 255, 0), None, 4, (0, 0), 0, 3.0, False)\n        #try:\n        #    eg.plugins.Speech.TextToSpeech(u\'Microsoft Zira Desktop - English (United States)\', 0, "{0} {1}".format(device, eventname), u\'\', 100, u\'C49RG9x (NVIDIA High Definition Audio)\')\n        #except:\n        #    pass\n            \n        eg.TriggerEvent("{0} {1}".format(device, eventname))\n        break\n')
             </Action>
         </Macro>
         <Macro Name="Stop SteamVR" Expanded="True">
-            <Event Name="Main.PSVR Disconnected" />
+            <Event Name="Main.PSVR DISCONNECTED" />
             <Action>
                 System.Command(u'taskkill /IM "vrmonitor.exe" /F', True, False, u'', True, False, False, False, False)
             </Action>
         </Macro>
         <Macro Name="Start SteamVR" Expanded="True">
-            <Event Name="Main.PSVR Connected" />
+            <Event Name="Main.PSVR CONNECTED" />
             <Action>
                 System.Command(u'start steam://rungameid/250820', False, False, u'', True, False, False, False, False)
             </Action>
