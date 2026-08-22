@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; Removes the .uri file association created by install-uri-handler.reg.
+; Also delete the script folder afterwards:
+;   %LOCALAPPDATA%\UriListHandler
+
+[-HKEY_CURRENT_USER\Software\Classes\.uri]
+
+[-HKEY_CURRENT_USER\Software\Classes\UriListFile]
+
+; Clears the leftover Explorer "Open with" entry, if one was created.
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.uri\OpenWithProgids]
+"UriListFile"=-

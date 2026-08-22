@@ -1,0 +1,40 @@
+Windows Registry Editor Version 5.00
+
+; Associates .uri files (plain text, one URL per line) with the default browser.
+; Every http/https line in the file is opened - browsers group them into tabs.
+; Requires open-uri.js at %LOCALAPPDATA%\UriListHandler\open-uri.js.
+; Installs per-user (HKCU), so no administrator rights are required.
+; To uninstall, delete these two keys:
+;   HKEY_CURRENT_USER\Software\Classes\.uri
+;   HKEY_CURRENT_USER\Software\Classes\UriListFile
+
+[HKEY_CURRENT_USER\Software\Classes\.uri]
+@="UriListFile"
+"PerceivedType"="text"
+
+[HKEY_CURRENT_USER\Software\Classes\.uri\OpenWithProgids]
+"UriListFile"=""
+
+[HKEY_CURRENT_USER\Software\Classes\UriListFile]
+@="URL List"
+"FriendlyTypeName"="URL List"
+"EditFlags"=dword:00000000
+
+; Chrome's application icon (current default browser).
+[HKEY_CURRENT_USER\Software\Classes\UriListFile\DefaultIcon]
+@="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe,0"
+
+[HKEY_CURRENT_USER\Software\Classes\UriListFile\shell]
+@="open"
+
+[HKEY_CURRENT_USER\Software\Classes\UriListFile\shell\open]
+@="Open all links"
+
+[HKEY_CURRENT_USER\Software\Classes\UriListFile\shell\open\command]
+@="C:\\Windows\\System32\\wscript.exe \"C:\\Users\\tj\\AppData\\Local\\UriListHandler\\open-uri.js\" \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\UriListFile\shell\edit]
+@="Edit"
+
+[HKEY_CURRENT_USER\Software\Classes\UriListFile\shell\edit\command]
+@="%SystemRoot%\\System32\\notepad.exe \"%1\""
