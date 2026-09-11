@@ -1,0 +1,1 @@
+[...document.querySelectorAll("#playlists > ytd-playlist-add-to-option-renderer")].filter(e => !e.querySelector('#label').innerText.includes('Sim')).forEach(d => d.style.display='none')

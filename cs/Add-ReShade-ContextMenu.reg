@@ -1,0 +1,27 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade]
+"MUIVerb"="Install ReShade (Official)"
+"SubCommands"=""
+"Icon"="imageres.dll,-5302"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade\shell\Normal]
+"MUIVerb"="Install ReShade (Normal)"
+"Icon"="imageres.dll,-5302"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade\shell\Normal\command]
+@="powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"D:\\source\\mine\\Scripting\\cs\\Install-ReShade.ps1\" \"%1\" Normal"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade\shell\Addon]
+"MUIVerb"="Install ReShade (Add-on Support)"
+"Icon"="imageres.dll,-5302"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade\shell\Addon\command]
+@="powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"D:\\source\\mine\\Scripting\\cs\\Install-ReShade.ps1\" \"%1\" Addon"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade\shell\Uninstall]
+"MUIVerb"="Uninstall ReShade"
+"Icon"="imageres.dll,-5324"
+
+[HKEY_CURRENT_USER\Software\Classes\exefile\shell\InstallReShade\shell\Uninstall\command]
+@="powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"D:\\source\\mine\\Scripting\\cs\\Install-ReShade.ps1\" \"%1\" Uninstall"
