@@ -1,0 +1,3 @@
+"#SingleInstance force
+
+AppsKey::Send "{Shift down}{LWin down}{F23}{LWin up}{Shift up}"
